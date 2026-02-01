@@ -23,8 +23,7 @@ function renderServerList() {
     serverListElement.innerHTML = '';
 
     const servers = [
-        'play.catcraftmc.ru'
-        // Добавьте больше серверов по мере необходимости
+        'IP сервера'
     ];
 
     servers.forEach(server => {
@@ -52,7 +51,7 @@ function renderServerList() {
 
 // Функция для автоматического обновления данных каждые 10 секунд
 function startAutoUpdate() {
-    renderServerList(); // Сначала отобразим данные один раз при загрузке страницы
+    renderServerList();
 
     setInterval(() => {
         renderServerList(); // Вызываем функцию обновления данных каждые 10 секунд

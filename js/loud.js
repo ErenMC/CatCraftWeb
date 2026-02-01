@@ -1,4 +1,3 @@
-// imitation of new page loading
 window.onload = function() {
     $body = $('body'),
     $btn  = $('.btn');

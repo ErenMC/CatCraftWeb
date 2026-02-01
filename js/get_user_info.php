@@ -56,20 +56,18 @@ $avatar = $user['avatar'];
 
 $conn = connect_db();
 
-// Проверяем, существует ли пользователь в БД
+// Проверка, существует ли пользователь в БД
 $stmt = $conn->prepare("SELECT id FROM users WHERE discord_id = ?");
 $stmt->bind_param("s", $discordId);
 $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
-    // Пользователь уже существует, обновляем его данные
     $stmt->close();
     $stmt = $conn->prepare("UPDATE users SET discord_name = ?, avatar = ? WHERE discord_id = ?");
     $stmt->bind_param("sss", $discordName, $avatar, $discordId);
     $stmt->execute();
 } else {
-    // Пользователь не найден, создаем новую запись
     $stmt->close();
     $stmt = $conn->prepare("INSERT INTO users (discord_id, discord_name, avatar) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $discordId, $discordName, $avatar);

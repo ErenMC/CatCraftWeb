@@ -24,10 +24,10 @@ window.onload = function() {
 
 // Функция для обновления информации о пользователе на странице
 function updateUserInfo(user) {
-    document.getElementById('login-button').classList.add('hidden'); // Скрываем кнопку "Войти"
+    document.getElementById('login-button').classList.add('hidden');
     const userInfo = document.getElementById('user-info');
-    userInfo.classList.remove('hidden'); // Показываем блок с информацией о пользователе
-    document.getElementById('avatar').src = `https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.png`; // Устанавливаем аватарку пользователя
+    userInfo.classList.remove('hidden');
+    document.getElementById('avatar').src = `https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}.png`;
     document.getElementById('discord-name').textContent = `Discord: ${user.discordName}`;
     document.getElementById('minecraft-name').textContent = `Minecraft: ${user.minecraftName}`;
     document.getElementById('balance').textContent = `Баланс: ${user.balance}`;
@@ -101,7 +101,7 @@ function logout() {
     location.reload();
 }
 
-// Вызываем функцию загрузки информации о пользователе при загрузке страницы
+// Функция загрузки информации о пользователе при загрузке страницы
 window.onload = function() {
     loadUserInfo();
 };

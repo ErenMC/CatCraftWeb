@@ -74,25 +74,22 @@ if (isset($_GET['code'])) {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        // Пользователь уже существует, обновляем его данные
         $stmt->close();
         $stmt = $conn->prepare("UPDATE users SET discord_name = ?, avatar = ? WHERE discord_id = ?");
         $stmt->bind_param("sss", $discordName, $avatar, $discordId);
         $stmt->execute();
     } else {
-        // Пользователь не найден, создаем новую запись
         $stmt->close();
         $stmt = $conn->prepare("INSERT INTO users (discord_id, discord_name, avatar) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $discordId, $discordName, $avatar);
         $stmt->execute();
     }
 
-    // Формируем ответ в формате JSON
     $response = array(
         'discordId' => $discordId,
         'discordName' => $discordName,
         'avatar' => $avatar,
-        'minecraftName' => '', // Вы можете добавить другие данные пользователя
+        'minecraftName' => '',
         'balance' => 0
     );
 
