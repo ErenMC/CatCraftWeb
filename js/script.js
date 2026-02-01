@@ -24,7 +24,7 @@ function loadScreenshots() {
                         }
                     }
 
-                    // Устанавливаем фоны для контейнеров скриншотов
+                    // Фон для контейнеров скриншотов
                     const screenshotElements = document.querySelectorAll('.screenshot');
                     screenshotElements.forEach((element, index) => {
                         if (randomFiles[index]) {
@@ -44,7 +44,7 @@ function loadScreenshots() {
     xhr.send();
 }
 
-// Вызываем функцию загрузки скриншотов при загрузке страницы
 window.onload = function() {
     loadScreenshots();
 };
+
